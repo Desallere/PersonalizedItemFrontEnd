@@ -25,27 +25,22 @@ function App() {
 
   // Always reset session on load
   useEffect(() => {
-    startSession()
-  .then((id) => {
-    console.log('Session started:', id);
-    setUserId(id);
-
-    Promise.all([fetchQuestions('A'), fetchQuestions('B')])
-      .then(([setA, setB]) => {
+    startSession().then((id) => {
+      setUserId(id);
+  
+      Promise.all([fetchQuestions('A'), fetchQuestions('B')]).then(([setA, setB]) => {
         const totalA = setA.length;
         const totalB = setB.length;
         const totalC = totalA;
         setTotalCount(totalA + totalB + totalC);
-
         setBooted(true);
+  
         if (location.pathname !== '/survey/a') {
           navigate('/survey/a', { replace: true });
         }
-      })
-      .catch((err) => console.error('Failed to fetch question sets', err));
-  })
-  .catch((err) => console.error('Failed to start session', err));
-  }, []);
+      });
+    });
+  }, [location.pathname, navigate]); //
   
 
   // Warn on reload

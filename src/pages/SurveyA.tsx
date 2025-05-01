@@ -15,7 +15,7 @@ const SurveyA: React.FC<Props> = ({ userId, onAnswer }) => {
   useEffect(() => {
     fetchQuestions('A').then(setQuestions);
     markTiming(userId, 'A', 'enterTime');
-  }, []);
+  }, [userId]);
   
   const handleComplete = () => {
     markTiming(userId, 'A', 'exitTime');

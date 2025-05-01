@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import QuestionCard from './QuestionCard';
-import ProgressBar from './ProgressBar';
+
 import { Question } from '../services/api';
 import { logAnswer } from '../services/api';
 
