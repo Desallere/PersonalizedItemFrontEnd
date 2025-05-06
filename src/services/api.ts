@@ -73,7 +73,32 @@ export async function fetchQuestions(setId: string, userId?: string): Promise<Qu
           { optionId: 'opt2', text: '5' },
           { optionId: 'opt3', text: '6' },
         ],
-      },];
+      },{
+        questionId: 'A4',
+        text: 'What is 2 + 2?',
+        options: [
+          { optionId: 'opt1', text: '3' },
+          { optionId: 'opt2', text: '4' },
+          { optionId: 'opt3', text: '5' },
+        ],
+      },
+      {
+        questionId: 'A5',
+        text: 'What is 3 + 1?',
+        options: [
+          { optionId: 'opt1', text: '4' },
+          { optionId: 'opt2', text: '5' },
+          { optionId: 'opt3', text: '6' },
+        ],
+      },{
+        questionId: 'A6',
+        text: 'What is 3 + 1?',
+        options: [
+          { optionId: 'opt1', text: '4' },
+          { optionId: 'opt2', text: '5' },
+          { optionId: 'opt3', text: '6' },
+        ],
+      }];
   }
 
   if (setId === 'B') {
