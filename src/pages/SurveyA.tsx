@@ -25,7 +25,7 @@ const SurveyA: React.FC<Props> = ({ userId, onAnswer }) => {
 
   return (
     <div className="container mt-5">
-      <h1 className="mb-4">Survey Set A</h1>
+      <h1 className="mb-4">Survey Set A Personality</h1>
       {questions.length ? (
         <QuestionSet
           setId="A"

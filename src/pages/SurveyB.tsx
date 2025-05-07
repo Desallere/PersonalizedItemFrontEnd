@@ -39,7 +39,7 @@ const SurveyB: React.FC<Props> = ({ userId, onAnswer }) => {
 
   return (
     <div className="container mt-5">
-      <h1 className="mb-4">Survey Set B</h1>
+      <h1 className="mb-4">Survey Set B Social Desirability</h1>
       {questions.length ? (
         <QuestionSet
           setId="B"

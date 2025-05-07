@@ -44,9 +44,9 @@ const QuestionSet: React.FC<Props> = ({
     /* Scroll to next question or footer */
     const nextCard = cardRefs.current[idx + 1];
     if (nextCard) {
-      nextCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      //nextCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } else {
-      footerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      //footerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   };
 
