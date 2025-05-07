@@ -2,47 +2,34 @@ import React, { useEffect, useState } from 'react';
 import { fetchQuestions, markTiming, Question } from '../services/api';
 import QuestionSet from '../components/QuestionSet';
 import { useNavigate } from 'react-router-dom';
+import { markCompleteSession } from '../services/api';
 
-const API_BASE = process.env.REACT_APP_API_BASE as string;
 interface Props {
   userId: string;
   onAnswer: () => void;
 }
 
-const SurveyB: React.FC<Props> = ({ userId, onAnswer }) => {
+const SurveyD: React.FC<Props> = ({ userId, onAnswer }) => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchQuestions('B').then(setQuestions);
-    markTiming(userId, 'B', 'enterTime');
+    fetchQuestions('D', userId).then(setQuestions);
+    markTiming(userId, 'D', 'enterTime');
   }, [userId]);
-  
+
   const handleComplete = async () => {
-    markTiming(userId, 'B', 'exitTime');
-    
-    // Fetch the user data to check their userNumber
-    const res = await fetch(`${API_BASE}/user/${userId}`);
-    const data = await res.json();
-    console.log(data.userNumber);
-    // Check if the user's number is odd or even
-    if (data.userNumber % 2 !== 0) {
-      // If odd, navigate to Survey D
-      navigate('/survey/d');
-    } else {
-      // If even, navigate to Survey C
-      navigate('/survey/c');
-    }
+    await markTiming(userId, 'D', 'exitTime');
+    await markCompleteSession(userId);
+    navigate('/thank-you');
   };
-  
-  
 
   return (
     <div className="container mt-5">
-      <h1 className="mb-4">Survey Set B</h1>
+      <h1 className="mb-4">Survey Set D</h1>
       {questions.length ? (
         <QuestionSet
-          setId="B"
+          setId="D"
           questions={questions}
           userId={userId}
           onComplete={handleComplete}
@@ -55,4 +42,4 @@ const SurveyB: React.FC<Props> = ({ userId, onAnswer }) => {
   );
 };
 
-export default SurveyB;
+export default SurveyD;
